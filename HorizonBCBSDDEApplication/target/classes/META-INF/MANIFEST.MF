@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: CSS109913
+Build-Jdk: 10.0.1
+Implementation-Title: HorizonBCBSDDEApplication
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.horizon.bcbs.dde
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/horizon-bcbs-dde
+Created-By: Maven Integration for Eclipse
+
