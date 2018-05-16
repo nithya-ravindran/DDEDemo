@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +27,6 @@ public class HorizonBcbsDDEFeedReadSenderHelper {
 
 	private BufferedReader fileReader;
 	
-	@Autowired
 	private HorizonBcbsDDESenderService sender;
 	
 	private ArrayList<AbstractDDEModel> table;

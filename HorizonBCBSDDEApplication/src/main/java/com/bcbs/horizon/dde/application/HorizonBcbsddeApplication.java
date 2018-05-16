@@ -5,9 +5,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 
+import com.bcbs.horizon.dde.config.HorizonBcbsDDEConfig;
+
 @SpringBootApplication
+@Configuration
+@Import({HorizonBcbsDDEConfig.class})
 @ComponentScan(basePackages = "com.bcbs.horizon.dde")
 public class HorizonBcbsddeApplication {
 	
@@ -30,7 +36,7 @@ public class HorizonBcbsddeApplication {
 	@Bean
 	public CommandLineRunner usageTwo() {
 		System.out.println("Inside usage two..");
-		return new AppRunner();
+		return new HorizonBcbsDDEAppRunner();
 	}
 
 	public static void main(String[] args) {

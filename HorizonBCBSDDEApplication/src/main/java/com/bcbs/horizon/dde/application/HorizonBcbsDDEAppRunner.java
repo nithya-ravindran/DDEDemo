@@ -9,14 +9,13 @@ import com.bcbs.horizon.dde.config.HorizonBcbsDDEConfig;
 import com.bcbs.horizon.dde.helper.HorizonBcbsDDEFeedReadSenderHelper;
 
 
-public class AppRunner implements CommandLineRunner {
+public class HorizonBcbsDDEAppRunner implements CommandLineRunner {
 	
 	@Value("${tutorial.client.duration:0}")
     private int duration;
 	
 	private AnnotationConfigApplicationContext  context = new AnnotationConfigApplicationContext(HorizonBcbsDDEConfig.class);
 	
-	@Autowired
 	HorizonBcbsDDEFeedReadSenderHelper fileLoader;
 
 	

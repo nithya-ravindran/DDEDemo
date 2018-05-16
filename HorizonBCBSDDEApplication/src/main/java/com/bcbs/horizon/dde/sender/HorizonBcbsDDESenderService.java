@@ -2,12 +2,10 @@ package com.bcbs.horizon.dde.sender;
 
 import java.util.ArrayList;
 
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.bcbs.horizon.dde.helper.HorizonBcbsDDEFeedReadSenderHelper;
 import com.bcbs.horizon.dde.model.AbstractDDEModel;
 
 @Component
@@ -17,11 +15,10 @@ public class HorizonBcbsDDESenderService {
 		System.out.println("horizonBcbsDDESenderService is initialized");
 	}
 
-	@Autowired
-	private RabbitTemplate rabbitTemplate;
+	private AmqpTemplate amqpTemplate;
 	
-	@Autowired
-	private Queue queue;
+	@Value("${jsa.rabbitmq.exchange}")
+	private String exchange;
 	
 	
 	public void send(ArrayList<AbstractDDEModel> table) {
@@ -32,7 +29,7 @@ public class HorizonBcbsDDESenderService {
 				 
 			}
 			
-			rabbitTemplate.convertAndSend(queue.getName(),table); 
+			amqpTemplate.convertAndSend(exchange, "sys.#",table); 
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -41,5 +38,11 @@ public class HorizonBcbsDDESenderService {
 		
 		
 	}
+	
+	/*public void produce(Log logs){
+		String routingKey = logs.getRoutingKey();
+		amqpTemplate.convertAndSend(exchange, routingKey, logs);
+		System.out.println("Send msg = " + logs);
+	}*/
 	
 }
