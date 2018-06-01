@@ -1,11 +1,15 @@
 package com.horizon.dde.app.model;
 
-public abstract class AbstractDDEModel {
+import java.io.Serializable;
+
+public abstract class AbstractDDEModel implements Serializable{
 
 	private int dataInstanceID = 0;
 	private String name;
 	private String gender;
 	private int age;
+	
+	public AbstractDDEModel(){};
 	
 		
 	public int getDataInstanceID() {

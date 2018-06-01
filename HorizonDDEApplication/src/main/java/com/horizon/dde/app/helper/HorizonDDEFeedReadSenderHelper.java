@@ -62,7 +62,6 @@ public class HorizonDDEFeedReadSenderHelper {
 				return 0;
 			}
 			while (strLine  != null) {
-				
 	    		if(table.size()<threshold) {
 	    			strLine = fileReader.readLine();
 	    			if(strLine == null) {sender.produce(getTable());continue;}
