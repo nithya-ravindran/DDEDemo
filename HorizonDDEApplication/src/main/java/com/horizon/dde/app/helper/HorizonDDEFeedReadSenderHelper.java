@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.horizon.dde.app.model.AbstractDDEModel;
-import com.horizon.dde.app.model.HorizonDDEDemoModel;
+import com.horizon.dde.app.model.HorizonDDEPersonModel;
 import com.horizon.dde.app.sender.HorizonDDESenderService;
 
 
@@ -69,7 +69,7 @@ public class HorizonDDEFeedReadSenderHelper {
 	    			
 	    			if(strLine != null) {
 	    				i++;
-	    				table.add(new HorizonDDEDemoModel(i, stringLines[0], stringLines[2], Integer.parseInt(stringLines[1])));
+	    				table.add(new HorizonDDEPersonModel((new Integer(i)).toString(), stringLines[0], stringLines[2], Integer.parseInt(stringLines[1])));
 	    			}
 	    			
 	    		}else {

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.horizon.dde.app.model.AbstractDDEModel;
-import com.horizon.dde.app.model.HorizonDDEDemoModel;
+import com.horizon.dde.app.model.HorizonDDEPersonModel;
 
 @Component
 public class HorizonDDESenderService {
@@ -22,8 +22,6 @@ public class HorizonDDESenderService {
 	
 	public void produce(ArrayList<AbstractDDEModel> arrayList){
 		String routingKey = "sys.dev.info";
-		for(AbstractDDEModel row : arrayList) {
-			amqpTemplate.convertAndSend(exchange, routingKey, row);
-		}
+			amqpTemplate.convertAndSend(exchange, routingKey, arrayList);
 	}
 }

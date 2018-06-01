@@ -1,19 +1,22 @@
 package com.horizon.dde.app.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Component
-public class HorizonDDEDemoModel extends AbstractDDEModel implements Serializable  {
-	private int dataInstanceID = 0;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+public class HorizonDDEPersonModel extends AbstractDDEModel implements Serializable  {
+	private String dataInstanceID;
 	private String name;
 	private String gender;
 	private int age;
 	
-	public HorizonDDEDemoModel(){};
+	public HorizonDDEPersonModel(){};
 	
-	public HorizonDDEDemoModel(int dataInstanceID,String name, String gender, int age) {
+	public HorizonDDEPersonModel(String dataInstanceID,String name, String gender, int age) {
 		super();
 		this.dataInstanceID = dataInstanceID;
 		this.name = name;
@@ -21,11 +24,11 @@ public class HorizonDDEDemoModel extends AbstractDDEModel implements Serializabl
 		this.age = age;
 	}
 	
-	public int getDataInstanceID() {
-		return dataInstanceID;
+	public String getDataInstanceID() {
+		return dataInstanceID.toString();
 	}
-	public void setDataInstanceID(int dataInstanceID) {
-		this.dataInstanceID = dataInstanceID;
+	public void setDataInstanceID(UUID uuid) {
+		this.dataInstanceID = uuid.toString();
 	}
 	public String getName() {
 		return name;

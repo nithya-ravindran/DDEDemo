@@ -1,10 +1,11 @@
 package com.horizon.dde.app.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public abstract class AbstractDDEModel implements Serializable{
 
-	private int dataInstanceID = 0;
+	private String dataInstanceID;
 	private String name;
 	private String gender;
 	private int age;
@@ -12,14 +13,12 @@ public abstract class AbstractDDEModel implements Serializable{
 	public AbstractDDEModel(){};
 	
 		
-	public int getDataInstanceID() {
-		return dataInstanceID;
+	public String getDataInstanceID() {
+		return dataInstanceID.toString();
 	}
-	public void setDataInstanceID(int dataInstanceID) {
-		this.dataInstanceID = dataInstanceID;
+	public void setDataInstanceID(UUID uuid) {
+		this.dataInstanceID = uuid.toString();
 	}
-	
-	
 	public String getName() {
 		return name;
 	}
