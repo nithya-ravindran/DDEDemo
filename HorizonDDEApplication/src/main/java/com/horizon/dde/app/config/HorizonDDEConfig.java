@@ -31,7 +31,7 @@ public class HorizonDDEConfig  {
     @Value("${spring.data.elasticsearch.cluster-name}")
     private String clusterName;
     private RestHighLevelClient restHighLevelClient;
-    private RestClient restClient ;
+    //private RestClient restClient ;
     
    
     @Bean
@@ -47,11 +47,11 @@ public class HorizonDDEConfig  {
 
 	
 	@Bean
-    private RestHighLevelClient buildClient() {
-    	RestClientBuilder restClientBuilder = RestClient.builder(new HttpHost("localhost", 9200, "http"),new HttpHost("localhost", 9201, "http"));
-    	restClient = restClientBuilder.build();
+    public RestHighLevelClient buildClient() {
+    	RestClientBuilder restClientBuilder = RestClient.builder(new HttpHost("localhost", 9200, "http")); //,new HttpHost("localhost", 9301, "http")
+    //	restClient = restClientBuilder.build();
         try {
-            restHighLevelClient = new RestHighLevelClient(restClient);
+            restHighLevelClient = new RestHighLevelClient(restClientBuilder);
             
         } catch (Exception e) {
         	e.printStackTrace();
