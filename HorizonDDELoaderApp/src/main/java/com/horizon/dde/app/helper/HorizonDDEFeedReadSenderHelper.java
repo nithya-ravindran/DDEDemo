@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -12,6 +14,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.horizon.dde.app.Formatter.BaseFormatter;
+import com.horizon.dde.app.annotation.DDEFormat;
+import com.horizon.dde.app.model.AbstractDDEDemoModel;
 import com.horizon.dde.app.model.AbstractDDEModel;
 import com.horizon.dde.app.model.HorizonDDEPersonModel;
 import com.horizon.dde.app.model.MDMCommercialModel;
@@ -42,17 +47,17 @@ public class HorizonDDEFeedReadSenderHelper {
 	@Autowired
 	private HorizonDDESenderService sender;
 	
-	private ArrayList<AbstractDDEModel> table;
+	private ArrayList<AbstractDDEDemoModel> table;
 	
 	public HorizonDDEFeedReadSenderHelper()   {
 		table = new ArrayList<>();
 	}
 	
-	public ArrayList<AbstractDDEModel> getTable() {
+	public ArrayList<AbstractDDEDemoModel> getTable() {
 		return table;
 	}
 
-	public void setTable(ArrayList<AbstractDDEModel> table) {
+	public void setTable(ArrayList<AbstractDDEDemoModel> table) {
 		this.table = table;
 	}
 	
@@ -87,7 +92,7 @@ public class HorizonDDEFeedReadSenderHelper {
 	    			
 	    		}else {
 	    			sender.produce(getTable());
-	    			setTable(new ArrayList<AbstractDDEModel>() );
+	    			setTable(new ArrayList<AbstractDDEDemoModel>() );
 	    		}
 	    	}  
 			
@@ -110,18 +115,67 @@ public class HorizonDDEFeedReadSenderHelper {
 		System.out.println("Reading the JSON file feed... ");
 		String filePath = propFeedJsonFilePath+"/"+feedJsonFileName;
 		String strLine;
+		
+		//no paramater
+		Class noparams[] = {};
+			
+		//String parameter
+		Class[] paramString = new Class[1];	
+		paramString[0] = String.class;
+			
+		//int parameter
+		Class[] paramInt = new Class[1];	
+		paramInt[0] = Integer.TYPE;
+		
 		int i = 0;
 		System.out.println(filePath);
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			jsonFile = new File(filePath);
 			
-			MDMCommercialModel mdmCommercialModelObject = mapper.readValue(jsonFile, MDMCommercialModel.class);	
+			AbstractDDEModel mdmCommercialModelObject = mapper.readValue(jsonFile, MDMCommercialModel.class);
 			
-			System.out.println("JSON File has been converted to Object of the given model/entity:");
+			Class<MDMCommercialModel> modelClass = (Class<MDMCommercialModel>) mdmCommercialModelObject.getClass();
+			
+	        try {
+
+	          
+
+	            for (Field field: modelClass.getDeclaredFields()) {
+	                field.setAccessible(true);
+	                if (field.isAnnotationPresent(DDEFormat.class)) {
+	                    System.out.print("Field Name is : " + field.getName());
+	                	System.out.println(" Annotated : " + field.isAnnotationPresent(DDEFormat.class));
+	                	String formatterMethod = field.getAnnotation(DDEFormat.class).formatterMethod();
+	                	System.out.println("Method Name is : " + formatterMethod);
+	                	Class<BaseFormatter> formatterClass = field.getAnnotation(DDEFormat.class).formatterType();
+	                	BaseFormatter formatterObject = formatterClass.newInstance();
+	                	
+	                	//call the formatterMethod method
+	            		Method method = formatterClass.getDeclaredMethod(formatterMethod, noparams);
+	            		method.invoke(formatterObject, null);
+	                	
+
+	                }
+	            }
+	        }
+
+	        catch (Exception e) {
+
+	           e.printStackTrace();
+
+	        }
+			
+			//ProviderFormatter providerFormatter = new ProviderFormatter(mdmCommercialModelObject);
+			
+			/*System.out.println("JSON File has been converted to Object of the given model/entity:");
 			System.out.println(mdmCommercialModelObject);
 			System.out.println("Provider Type : " + mdmCommercialModelObject.getTYPE());
 			System.out.println("BID : " + mdmCommercialModelObject.getBID());
+			System.out.println("RWJB : " + mdmCommercialModelObject.getRWJB());*/
+			
+			
+			
 			
 			/*fileFeed = new FileReader(filePath);
 			fileReader = new BufferedReader(fileFeed);

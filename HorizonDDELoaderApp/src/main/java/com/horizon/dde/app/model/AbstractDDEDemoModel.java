@@ -3,27 +3,16 @@ package com.horizon.dde.app.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-import org.springframework.stereotype.Component;
-import com.fasterxml.jackson.annotation.JsonInclude;
+public abstract class AbstractDDEDemoModel implements Serializable{
 
-@Component
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class HorizonDDEPersonModel extends AbstractDDEDemoModel implements Serializable  {
 	private String dataInstanceID;
 	private String name;
 	private String gender;
 	private int age;
 	
-	public HorizonDDEPersonModel(){};
+	public AbstractDDEDemoModel(){};
 	
-	public HorizonDDEPersonModel(String dataInstanceID,String name, String gender, int age) {
-		super();
-		this.dataInstanceID = dataInstanceID;
-		this.name = name;
-		this.gender = gender;
-		this.age = age;
-	}
-	
+		
 	public String getDataInstanceID() {
 		return dataInstanceID.toString();
 	}
@@ -48,8 +37,5 @@ public class HorizonDDEPersonModel extends AbstractDDEDemoModel implements Seria
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	@Override
-	public String toString() {
-		return String.format("{instanceId = %d, name = %s, gender = %s, age =%d}", dataInstanceID,name, gender,age);
-	}	
+	
 }

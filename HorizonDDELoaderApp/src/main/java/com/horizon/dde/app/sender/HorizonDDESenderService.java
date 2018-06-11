@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.horizon.dde.app.model.AbstractDDEModel;
+import com.horizon.dde.app.model.AbstractDDEDemoModel;
 import com.horizon.dde.app.model.HorizonDDEPersonModel;
 
 @Component
@@ -23,7 +23,7 @@ public class HorizonDDESenderService {
 	@Value("${rabbitmq.routingkey}")
 	private String routingKey;
 	
-	public void produce(ArrayList<AbstractDDEModel> arrayList){
+	public void produce(ArrayList<AbstractDDEDemoModel> arrayList){
 		
 			amqpTemplate.convertAndSend(exchange, routingKey, arrayList);
 	}
