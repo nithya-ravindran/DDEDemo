@@ -7,7 +7,7 @@ public class ProviderFormatter extends BaseFormatter {
 	
 	
 	public ProviderFormatter(AbstractDDEModel dataObject) {
-		super(dataObject);
+		//super(dataObject);
 	}
 	
 	
