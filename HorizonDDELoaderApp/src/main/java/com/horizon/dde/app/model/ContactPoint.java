@@ -39,7 +39,7 @@ public class ContactPoint implements Serializable
     private String value;
     @JsonProperty("period")
     @Valid
-    private Period___ period;
+    private Period period;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -60,7 +60,7 @@ public class ContactPoint implements Serializable
      * @param code
      * @param period
      */
-    public ContactPoint(Boolean isPrimary, String code, String usageType, String value, Period___ period) {
+    public ContactPoint(Boolean isPrimary, String code, String usageType, String value, Period period) {
         super();
         this.isPrimary = isPrimary;
         this.code = code;
@@ -110,12 +110,12 @@ public class ContactPoint implements Serializable
     }
 
     @JsonProperty("period")
-    public Period___ getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
     @JsonProperty("period")
-    public void setPeriod(Period___ period) {
+    public void setPeriod(Period period) {
         this.period = period;
     }
 

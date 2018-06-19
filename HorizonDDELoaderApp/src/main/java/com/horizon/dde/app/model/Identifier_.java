@@ -37,7 +37,7 @@ public class Identifier_ implements Serializable
     private String identificationValue;
     @JsonProperty("period")
     @Valid
-    private Period_______ period;
+    private Period period;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -57,7 +57,7 @@ public class Identifier_ implements Serializable
      * @param identifiers
      * @param period
      */
-    public Identifier_(Identifiers identifiers, String identificationCode, String identificationValue, Period_______ period) {
+    public Identifier_(Identifiers identifiers, String identificationCode, String identificationValue, Period period) {
         super();
         this.identifiers = identifiers;
         this.identificationCode = identificationCode;
@@ -96,12 +96,12 @@ public class Identifier_ implements Serializable
     }
 
     @JsonProperty("period")
-    public Period_______ getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
     @JsonProperty("period")
-    public void setPeriod(Period_______ period) {
+    public void setPeriod(Period period) {
         this.period = period;
     }
 

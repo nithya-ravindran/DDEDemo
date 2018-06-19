@@ -57,7 +57,7 @@ public class Affiliation implements Serializable
     private String endpoint;
     @JsonProperty("period")
     @Valid
-    private Period_____ period;
+    private Period period;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -84,7 +84,7 @@ public class Affiliation implements Serializable
      * @param type
      * @param endpoint
      */
-    public Affiliation(String id, String status, String type, String name, String providerId, String npi, String taxId, String horizonId, String role, String endpoint, Period_____ period) {
+    public Affiliation(String id, String status, String type, String name, String providerId, String npi, String taxId, String horizonId, String role, String endpoint, Period period) {
         super();
         this.id = id;
         this.status = status;
@@ -200,12 +200,12 @@ public class Affiliation implements Serializable
     }
 
     @JsonProperty("period")
-    public Period_____ getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
     @JsonProperty("period")
-    public void setPeriod(Period_____ period) {
+    public void setPeriod(Period period) {
         this.period = period;
     }
 

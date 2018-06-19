@@ -34,7 +34,7 @@ public class PartOf implements Serializable
     private String type;
     @JsonProperty("identifiers")
     @Valid
-    private List<Identifier_> identifiers = null;
+    private List<Identifier> identifiers = null;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -53,7 +53,7 @@ public class PartOf implements Serializable
      * @param organizationName
      * @param type
      */
-    public PartOf(String organizationName, String type, List<Identifier_> identifiers) {
+    public PartOf(String organizationName, String type, List<Identifier> identifiers) {
         super();
         this.organizationName = organizationName;
         this.type = type;
@@ -81,12 +81,12 @@ public class PartOf implements Serializable
     }
 
     @JsonProperty("identifiers")
-    public List<Identifier_> getIdentifiers() {
+    public List<Identifier> getIdentifiers() {
         return identifiers;
     }
 
     @JsonProperty("identifiers")
-    public void setIdentifiers(List<Identifier_> identifiers) {
+    public void setIdentifiers(List<Identifier> identifiers) {
         this.identifiers = identifiers;
     }
 

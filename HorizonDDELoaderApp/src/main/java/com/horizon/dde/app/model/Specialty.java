@@ -60,7 +60,7 @@ public class Specialty implements Serializable
     private String taxonomyProviderType;
     @JsonProperty("period")
     @Valid
-    private Period_ period;
+    private Period period;
     @JsonProperty("boardCertifications")
     @Valid
     private List<String> boardCertifications = null;
@@ -94,7 +94,7 @@ public class Specialty implements Serializable
      * @param displayName
      * @param taxonomyClassification
      */
-    public Specialty(Boolean isPrimary, String code, String name, String displayName, String hznStandardCode, String hznStandardName, String taxonomyCode, String taxonomySpecialtyName, String taxonomyClassification, String taxonomyProviderType, Period_ period, List<String> boardCertifications, Boolean isBoardCertified) {
+    public Specialty(Boolean isPrimary, String code, String name, String displayName, String hznStandardCode, String hznStandardName, String taxonomyCode, String taxonomySpecialtyName, String taxonomyClassification, String taxonomyProviderType, Period period, List<String> boardCertifications, Boolean isBoardCertified) {
         super();
         this.isPrimary = isPrimary;
         this.code = code;
@@ -212,12 +212,12 @@ public class Specialty implements Serializable
     }
 
     @JsonProperty("period")
-    public Period_ getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
     @JsonProperty("period")
-    public void setPeriod(Period_ period) {
+    public void setPeriod(Period period) {
         this.period = period;
     }
 

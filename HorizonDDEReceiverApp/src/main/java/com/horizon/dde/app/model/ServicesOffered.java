@@ -33,7 +33,7 @@ public class ServicesOffered implements Serializable
     private String value;
     @JsonProperty("period")
     @Valid
-    private Period______ period;
+    private Period period;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -52,7 +52,7 @@ public class ServicesOffered implements Serializable
      * @param typeOfService
      * @param period
      */
-    public ServicesOffered(String typeOfService, String value, Period______ period) {
+    public ServicesOffered(String typeOfService, String value, Period period) {
         super();
         this.typeOfService = typeOfService;
         this.value = value;
@@ -80,12 +80,12 @@ public class ServicesOffered implements Serializable
     }
 
     @JsonProperty("period")
-    public Period______ getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
     @JsonProperty("period")
-    public void setPeriod(Period______ period) {
+    public void setPeriod(Period period) {
         this.period = period;
     }
 

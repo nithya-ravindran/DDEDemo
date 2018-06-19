@@ -129,7 +129,7 @@ public class Provider implements Serializable
     private List<Message> messages = null;
     @JsonProperty("contactPoints")
     @Valid
-    private List<ContactPoint_> contactPoints = null;
+    private List<ContactPoint> contactPoints = null;
     @JsonProperty("participatingStatus")
     private String participatingStatus;
     @JsonProperty("isDirectory")
@@ -184,7 +184,7 @@ public class Provider implements Serializable
      * @param billingAddress
      * @param providerAttributes
      */
-    public Provider(String providerId, String entityType, String providerType, String providerRole, String ancillaryType, String name, String prefix, String firstName, String lastName, String middleInitial, String gender, String groupName, String degree, Boolean boardCertified, Boolean pcpSpecialist, Boolean acceptNewPatients, List<Identifier> identifiers, List<Qualification> qualifications, List<String> languages, List<Specialty> specialties, List<Network> networks, List<PracticeLocation> practiceLocations, List<TierIndicators> tierIndicators, PartOf partOf, String providerAttributes, BillingAddress billingAddress, List<HospitalAffiliation> hospitalAffiliations, Boolean inNetwork, List<Message> messages, List<ContactPoint_> contactPoints, String participatingStatus, Boolean isDirectory, String isExcluded) {
+    public Provider(String providerId, String entityType, String providerType, String providerRole, String ancillaryType, String name, String prefix, String firstName, String lastName, String middleInitial, String gender, String groupName, String degree, Boolean boardCertified, Boolean pcpSpecialist, Boolean acceptNewPatients, List<Identifier> identifiers, List<Qualification> qualifications, List<String> languages, List<Specialty> specialties, List<Network> networks, List<PracticeLocation> practiceLocations, List<TierIndicators> tierIndicators, PartOf partOf, String providerAttributes, BillingAddress billingAddress, List<HospitalAffiliation> hospitalAffiliations, Boolean inNetwork, List<Message> messages, List<ContactPoint> contactPoints, String participatingStatus, Boolean isDirectory, String isExcluded) {
         super();
         this.providerId = providerId;
         this.entityType = entityType;
@@ -512,12 +512,12 @@ public class Provider implements Serializable
     }
 
     @JsonProperty("contactPoints")
-    public List<ContactPoint_> getContactPoints() {
+    public List<ContactPoint> getContactPoints() {
         return contactPoints;
     }
 
     @JsonProperty("contactPoints")
-    public void setContactPoints(List<ContactPoint_> contactPoints) {
+    public void setContactPoints(List<ContactPoint> contactPoints) {
         this.contactPoints = contactPoints;
     }
 

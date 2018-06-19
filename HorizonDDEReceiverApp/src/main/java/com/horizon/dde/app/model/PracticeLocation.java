@@ -57,7 +57,7 @@ public class PracticeLocation implements Serializable
     private String status;
     @JsonProperty("period")
     @Valid
-    private Period__ period;
+    private Period period;
     @JsonProperty("address")
     @Valid
     private Address address;
@@ -75,10 +75,10 @@ public class PracticeLocation implements Serializable
     private List<Availability> availability = null;
     @JsonProperty("networks")
     @Valid
-    private List<Network_> networks = null;
+    private List<Network> networks = null;
     @JsonProperty("specialties")
     @Valid
-    private List<Specialty_> specialties = null;
+    private List<Specialty> specialties = null;
     @JsonProperty("affiliation")
     @Valid
     private List<Affiliation> affiliation = null;
@@ -139,7 +139,7 @@ public class PracticeLocation implements Serializable
      * @param accessibility
      * @param availability
      */
-    public PracticeLocation(Boolean isPrimary, String locationId, String name, String status, Period__ period, Address address, String nearestIntersection, String publicTransportation, String additionalInformation, List<ContactPoint> contactPoints, List<Availability> availability, List<Network_> networks, List<Specialty_> specialties, List<Affiliation> affiliation, List<ServicesOffered> servicesOffered, String availabilityNotes, List<String> locationMessage, String locationAttributes, List<Panel> panel, List<PracticeLimitation> practiceLimitations, String accessibility, Boolean isSuppressedDirectory) {
+    public PracticeLocation(Boolean isPrimary, String locationId, String name, String status, Period period, Address address, String nearestIntersection, String publicTransportation, String additionalInformation, List<ContactPoint> contactPoints, List<Availability> availability, List<Network> networks, List<Specialty> specialties, List<Affiliation> affiliation, List<ServicesOffered> servicesOffered, String availabilityNotes, List<String> locationMessage, String locationAttributes, List<Panel> panel, List<PracticeLimitation> practiceLimitations, String accessibility, Boolean isSuppressedDirectory) {
         super();
         this.isPrimary = isPrimary;
         this.locationId = locationId;
@@ -206,12 +206,12 @@ public class PracticeLocation implements Serializable
     }
 
     @JsonProperty("period")
-    public Period__ getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
     @JsonProperty("period")
-    public void setPeriod(Period__ period) {
+    public void setPeriod(Period period) {
         this.period = period;
     }
 
@@ -276,22 +276,22 @@ public class PracticeLocation implements Serializable
     }
 
     @JsonProperty("networks")
-    public List<Network_> getNetworks() {
+    public List<Network> getNetworks() {
         return networks;
     }
 
     @JsonProperty("networks")
-    public void setNetworks(List<Network_> networks) {
+    public void setNetworks(List<Network> networks) {
         this.networks = networks;
     }
 
     @JsonProperty("specialties")
-    public List<Specialty_> getSpecialties() {
+    public List<Specialty> getSpecialties() {
         return specialties;
     }
 
     @JsonProperty("specialties")
-    public void setSpecialties(List<Specialty_> specialties) {
+    public void setSpecialties(List<Specialty> specialties) {
         this.specialties = specialties;
     }
 

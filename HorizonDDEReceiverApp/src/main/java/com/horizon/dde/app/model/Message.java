@@ -30,7 +30,7 @@ public class Message implements Serializable
     private String message;
     @JsonProperty("period")
     @Valid
-    private Period________ period;
+    private Period period;
     @JsonIgnore
     @Valid
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
@@ -48,7 +48,7 @@ public class Message implements Serializable
      * @param message
      * @param period
      */
-    public Message(String message, Period________ period) {
+    public Message(String message, Period period) {
         super();
         this.message = message;
         this.period = period;
@@ -65,12 +65,12 @@ public class Message implements Serializable
     }
 
     @JsonProperty("period")
-    public Period________ getPeriod() {
+    public Period getPeriod() {
         return period;
     }
 
     @JsonProperty("period")
-    public void setPeriod(Period________ period) {
+    public void setPeriod(Period period) {
         this.period = period;
     }
 
